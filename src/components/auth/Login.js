@@ -1,50 +1,48 @@
-import React, { useState } from 'react';
-import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Placeholder for actual authentication logic
-    if (username === 'user' && password === 'password') {
-      navigate('/dashboard');
+    // Temporary authentication logic
+    if (username === "admin" && password === "password") {
+      navigate("/dashboard");
     } else {
-      alert('Invalid credentials');
+      alert("Invalid credentials");
     }
   };
 
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
+      <div className="login-box">
+        <img src="https://your-logo-url.com/deloitte.png" alt="Deloitte Logo" className="logo" />
+        <h2>iCMS Tax</h2>
+        <p>Welcome to the iCMS group dashboard page</p>
+        <form onSubmit={handleLogin}>
           <input
             type="text"
-            id="username"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
           <input
             type="password"
-            id="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;
